@@ -1,6 +1,6 @@
-<h1>Add New Restaurant</h1>
+<h1>Edit Restaurant</h1>
 
-<%= form_with scope: :restaurant, url: restaurants_path, local: true do |form| %>
+<%= form_with(model: @restaurant) do |form| %>
   <% if @restaurant.errors.any? %>
     <div id="error_explanation">
       <h2> Please check the
