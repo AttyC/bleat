@@ -1,5 +1,6 @@
 class RestaurantsController < ApplicationController
-   # GET '/restaurants'
+
+  # GET '/restaurants'
   def index
     @restaurants = Restaurant.all
   end
@@ -20,7 +21,7 @@ class RestaurantsController < ApplicationController
   end
 
   # POST '/restaurants'
-  def create 
+  def create
     @restaurant = Restaurant.new(restaurant_params)
     if @restaurant.save
       redirect_to @restaurant
