@@ -1,17 +1,24 @@
 <h1>Restaurants</h1>
 
 <table>
-  <tr>
-    <th>Name</th>
-    <th>Description</th>
-  </tr>
+ <tr>
+   <th>Name</th>
+   <th>Description</th>
+   <th>Reviews</th>
+ </tr>
 
-  <% @restaurants.each do |restaurant| %>
-  <tr>
-    <td><%= link_to "#{restaurant.name}", restaurant_path(restaurant) %></td>
-    <td><%= restaurant.description %></td>
-  </tr>
-  <% end %>
+ <% @restaurants.each do |restaurant| %>
+ <tr>
+   <td><%= link_to "#{restaurant.name}", restaurant_path(restaurant) %></td>
+   <td><%= restaurant.description %></td>
+
+   <td id="reviews"><% restaurant.reviews.each do |review| %>
+     (<%= review.rating %>) <%= review.comment  %>
+   <% end %>
+ </td>
+
+ </tr>
+ <% end %>
 </table>
 
 <%= link_to 'New restaurant', new_restaurant_path %>
