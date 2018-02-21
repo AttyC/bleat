@@ -1,5 +1,7 @@
 class ReviewsController < ApplicationController
 
+  skip_before_action :authenticate_user!, only: [:index, :show]
+
   def index
     @reviews = Restaurant.find(params[:restaurant_id]).reviews
   end

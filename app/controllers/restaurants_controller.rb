@@ -1,26 +1,23 @@
 class RestaurantsController < ApplicationController
 
-  # GET '/restaurants'
+  skip_before_action :authenticate_user!, only: [:index, :show]
+
   def index
     @restaurants = Restaurant.all
   end
 
-  # GET '/restaurants/id'
   def show
     @restaurant = Restaurant.find(params[:id])
   end
 
-  # GET '/restaurants/new'
   def new
     @restaurant = Restaurant.new
   end
 
-  # GET '/restaurants/:id/edit'
   def edit
     @restaurant = Restaurant.find(params[:id])
   end
 
-  # POST '/restaurants'
   def create
     @restaurant = Restaurant.new(restaurant_params)
     if @restaurant.save
@@ -30,7 +27,6 @@ class RestaurantsController < ApplicationController
     end
   end
 
-  # PATCH '/restaurants/:id/update'
   def update
     @restaurant = Restaurant.find(params[:id])
     if @restaurant.update(restaurant_params)
