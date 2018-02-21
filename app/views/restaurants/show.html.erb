@@ -24,8 +24,7 @@
 <div id='reviews'>
 <ul>
 <% @restaurant.reviews.each do |review| %>
-  <li><%= review.rating %></li>
-  <li><%= review.comment  %></li>
+  <li><%= review.rating %>: <%= review.comment  %></li>
 <% end %>
 </ul>
 </div>
