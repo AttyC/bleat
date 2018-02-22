@@ -1,10 +1,40 @@
 // Place all the styles related to the Restaurants controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+$header-font: 'Josefin Sans', sans-serif;//'Source Sans Pro', sans-serif;//'Karma', serif;
+$body-font: 'Source Sans Pro', sans-serif;
+$standard-width: 85%;
+$body-margin: 'auto';
+body {
+  font-family: $body-font;
+  width: $standard-width;
+  margin: $body-margin;
+}
+
+h1, h2, th {
+  font-family: $header-font;
+ }
+
+ ul {
+   list-style-type: none;
+ }
+
+a {
+  text-decoration: none;
+  color: #880b0b;
+  font-weight: bold;
+}
+
+.description {
+  border: #ccc 1px solid;
+  padding: 2em;
+  background: #ffc1071c;
+}
+
 table {
-  border: 1px grey solid;
   text-align: left;
-  width: 100%;
+  width:100%;
 }
 td {
   padding: 20px;

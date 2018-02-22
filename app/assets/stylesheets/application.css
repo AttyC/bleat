@@ -13,3 +13,10 @@
  *= require_tree .
  *= require_self
  */
+.small {
+  font-size: 0.8em;
+}
+
+section {
+  margin: 2em auto;
+}
