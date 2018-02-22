@@ -22,9 +22,13 @@
 <%= link_to 'Add Review', new_restaurant_review_path(@restaurant) %>
 
 <div id='reviews'>
-<ul>
-<% @restaurant.reviews.each do |review| %>
-  <li><%= review.rating %>: <%= review.comment  %></li>
-<% end %>
-</ul>
+  <ul>
+  <% @restaurant.reviews.each do |review| %>
+   <li><%= review.rating %>: <%= review.comment  %>
+   <%= link_to "Remove", restaurant_review_path(@restaurant.id, review),
+     method: :delete,
+     data: { confirm: 'Are you sure?' } %>
+   </li>
+  <% end %>
+  </ul>
 </div>
