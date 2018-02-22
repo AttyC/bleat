@@ -10,4 +10,22 @@ RSpec.describe "Display Reviews", :type => :feature do
       within('td#reviews') {expect(page).to have_content('really good!!')}
     end
   end
+  feature 'Show reviews for two restaurants' do
+    scenario 'when on restaurant index page' do
+      create_restaurant('Testaurant', 'Delicious')
+      create_review(2, 'really good!!')
+      create_review(5, 'terrible rat problem!')
+      within('div#reviews') {expect(page).to have_content('5')}
+      within('div#reviews') {expect(page).to have_content('terrible rat problem!')}
+    end
+  end
+  feature 'Delete review' do
+    scenario 'when on resturant show page' do
+      create_restaurant('Testaurant', 'Delicious')
+      create_review(2, 'really good!!')
+      create_review(5, 'terrible rat problem!')
+      click_on 'Remove Review 1'
+      within('div#reviews li:first-child') {expect(page).not_to have_content('really good!!')}
+    end
+  end
 end
