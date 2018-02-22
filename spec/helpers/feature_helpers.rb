@@ -13,12 +13,12 @@ def create_review(rating, comment)
   click_button 'Create Review'
 end
 
-def sign_up
+def sign_up(email='new_user@abc.com',password='password')
   visit '/'
   click_on 'Login'
   click_on 'Sign up'
-  fill_in 'user[email]', with: 'new_user@abc.com'
-  fill_in 'user[password]', with: 'password'
-  fill_in 'user[password_confirmation]', with: 'password'
+  fill_in 'user[email]', with: email
+  fill_in 'user[password]', with: password
+  fill_in 'user[password_confirmation]', with: password
   click_button 'Sign up'
 end

@@ -24,7 +24,7 @@
 <div id='reviews'>
   <ul>
   <% @restaurant.reviews.each do |review| %>
-   <li>Review <%= review.id %> <%= review.rating %>: <%= review.comment  %>
+   <li>Review <%= review.id %> by <%= User.find(review.reviewer_id).email %> <%= review.rating %>: <%= review.comment  %>
    <%= link_to "Remove Review #{review.id}", restaurant_review_path(@restaurant.id, review),
      method: :delete,
      data: { confirm: 'Are you sure?' } %>
