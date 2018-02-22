@@ -9,7 +9,7 @@
 </p>
 
 <p>
-  <%= link_to "Remove", restaurant_path(@restaurant),
+  <%= link_to "Remove Restaurant", restaurant_path(@restaurant),
   method: :delete,
   data: { confirm: 'Are you sure?' } %>
 </p>
@@ -24,8 +24,8 @@
 <div id='reviews'>
   <ul>
   <% @restaurant.reviews.each do |review| %>
-   <li><%= review.rating %>: <%= review.comment  %>
-   <%= link_to "Remove", restaurant_review_path(@restaurant.id, review),
+   <li>Review <%= review.id %> <%= review.rating %>: <%= review.comment  %>
+   <%= link_to "Remove Review #{review.id}", restaurant_review_path(@restaurant.id, review),
      method: :delete,
      data: { confirm: 'Are you sure?' } %>
    </li>
