@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get 'welcome/index'
 
   resources :restaurants do
-    resources :reviews
+    resources :reviews, only: [:create, :new, :edit, :update, :destroy]
   end
 
   root 'welcome#index'
