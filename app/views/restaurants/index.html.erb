@@ -1,6 +1,6 @@
 <h1>Restaurants</h1>
 
-<table>
+<table id="reviews">
  <tr>
    <th>Name</th>
    <th>Description</th>
@@ -13,7 +13,7 @@
    <td><%= link_to "#{restaurant.name}", restaurant_path(restaurant) %></td>
    <td><%= restaurant.description %></td>
 
-   <td id="reviews"><% restaurant.reviews.each do |review| %>
+   <td class="review"><% restaurant.reviews.each do |review| %>
      <%= review.comment %> (<%= review.rating %>)
 
    <% end %>

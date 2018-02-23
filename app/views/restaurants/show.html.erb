@@ -13,9 +13,9 @@
 
 </section>
 
-<section id='reviews'>
+<section>
   <h3><%= link_to 'Add Review', new_restaurant_review_path(@restaurant) %></h3>
-  <table>
+  <table id='reviews'>
     <tr>
       <th>Review No.</th>
       <th>Reviewer</th>
@@ -26,9 +26,9 @@
    <% @restaurant.reviews.each do |review| %>
     <tr>
       <td><%= review.id %> </td>
-      <td><%= User.find(review.reviewer_id).email %></td>
-      <td><%= review.rating %></td>
-      <td><%= review.comment  %></td>
+      <td class="reviewer"><%= User.find(review.reviewer_id).email %></td>
+      <td class="rating<%=review.id %>"><%= review.rating %></td>
+      <td class="review<%=review.id %>"><%= review.comment  %></td>
       <td class="small" colspan='3'><%= link_to "Remove Review #{review.id}", restaurant_review_path(@restaurant.id, review),
          method: :delete,
          data: { confirm: 'Are you sure?' } %> |
@@ -38,4 +38,3 @@
   </table>
 
 </section>
-
