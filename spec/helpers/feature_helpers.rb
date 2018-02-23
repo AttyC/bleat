@@ -1,6 +1,6 @@
 def create_restaurant(name, description)
   visit '/restaurants'
-  click_on 'New restaurant'
+  click_on 'Add New Restaurant'
   fill_in 'restaurant[name]', with: name
   fill_in 'restaurant[description]', with: description
   click_button 'Create Restaurant'

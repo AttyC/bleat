@@ -7,8 +7,7 @@ RSpec.describe "Display Reviews", :type => :feature do
       create_restaurant('Testaurant', 'Delicious')
       create_review(2, 'really good!!')
       visit '/restaurants'
-      within('td#reviews') {expect(page).to have_content('2')}
-      within('td#reviews') {expect(page).to have_content('really good!!')}
+      within('td.review') {expect(page).to have_content('really good!!')}
     end
   end
   feature 'Show reviews for two restaurants' do
@@ -17,8 +16,8 @@ RSpec.describe "Display Reviews", :type => :feature do
       create_restaurant('Testaurant', 'Delicious')
       create_review(2, 'really good!!')
       create_review(5, 'terrible rat problem!')
-      within('div#reviews') {expect(page).to have_content('5')}
-      within('div#reviews') {expect(page).to have_content('terrible rat problem!')}
+      within('td.rating2') {expect(page).to have_content('5')}
+      within('td.review2') {expect(page).to have_content('terrible rat problem!')}
     end
   end
   feature 'Delete review' do
@@ -28,7 +27,7 @@ RSpec.describe "Display Reviews", :type => :feature do
       create_review(2, 'really good!!')
       create_review(5, 'terrible rat problem!')
       click_on 'Remove Review 1'
-      within('div#reviews li:first-child') {expect(page).not_to have_content('really good!!')}
+      expect(page).not_to have_content('really good!!')
     end
   end
 end
