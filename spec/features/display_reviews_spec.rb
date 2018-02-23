@@ -26,7 +26,7 @@ RSpec.describe "Display Reviews", :type => :feature do
       create_restaurant('Testaurant', 'Delicious')
       create_review(2, 'really good!!')
       create_review(5, 'terrible rat problem!')
-      click_on 'Remove Review 1'
+      click_on 'remove_review_1'
       expect(page).not_to have_content('really good!!')
     end
   end
