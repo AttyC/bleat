@@ -5,10 +5,15 @@ class ReviewsController < ApplicationController
   def index
     @reviews = Restaurant.find(params[:restaurant_id]).reviews
   end
-
+  
   def new
     @review = Review.new
     @restaurant = Restaurant.find(params[:restaurant_id])
+  end
+
+  def edit
+    @restaurant = Restaurant.find(params[:restaurant_id])
+    @review = Review.find(params[:id])
   end
 
   def create
@@ -25,7 +30,11 @@ class ReviewsController < ApplicationController
   def destroy
     @restaurant = Restaurant.find(params[:restaurant_id])
     @review = Review.find(params[:id])
-    @review.destroy
+    if User.find(@review.reviewer_id) == current_user
+      @review.destroy
+    else
+      flash[:notice] = "You may not delete this review"
+    end
     redirect_to restaurant_path(@restaurant)
   end
 

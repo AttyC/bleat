@@ -1,0 +1,29 @@
+<%= form_with model: [@restaurant, @restaurant.reviews.build], local: true do |form| %>
+  <% if @review.errors.any? %>
+    <div id="error_explanation">
+      <h2> Please check the
+        <%= pluralize(@review.errors.count, "error") %> below:
+      </h2>
+      <ul>
+        <% @review.errors.full_messages.each do |msg| %>
+          <li>
+            <%= msg %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <p>
+    <%= form.label :rating %>
+    <%= form.number_field(:rating, in: 0..5, step: 1) %>
+  </p>
+
+  <p>
+    <%= form.label :comment %>
+    <%= form.text_field :comment %>
+  </p>
+
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>

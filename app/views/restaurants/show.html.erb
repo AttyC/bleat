@@ -1,4 +1,3 @@
-| <%= link_to 'Back', restaurants_path %>
 <section>
   <div>
       <h1><%= @restaurant.name %></h1>
@@ -17,24 +16,26 @@
   <h3><%= link_to 'Add Review', new_restaurant_review_path(@restaurant) %></h3>
   <table id='reviews'>
     <tr>
-      <th>Review No.</th>
       <th>Reviewer</th>
       <th>Rating:</th>
       <th>Comments:</th>
-      <th>Remove/Edit</th>
     </tr>
    <% @restaurant.reviews.each do |review| %>
     <tr>
-      <td><%= review.id %> </td>
       <td class="reviewer"><%= User.find(review.reviewer_id).email %></td>
       <td class="rating<%=review.id %>"><%= review.rating %></td>
       <td class="review<%=review.id %>"><%= review.comment  %></td>
-      <td class="small" colspan='3'><%= link_to "Remove Review #{review.id}", restaurant_review_path(@restaurant.id, review),
-         method: :delete,
-         data: { confirm: 'Are you sure?' } %> |
-      <%= link_to "Edit", edit_restaurant_review_path(@restaurant) %></td></td>
+
+      <% if User.find(review.reviewer_id) == current_user %>
+        <td class="small" colspan='3'><%= link_to "Remove Review", restaurant_review_path(@restaurant.id, review.id),
+           method: :delete,
+           data: { confirm: 'Are you sure?' },
+           id: "remove_review_#{review.id}" %> |
+        <%= link_to "Edit", edit_restaurant_review_path(@restaurant.id, review.id) %></td>
+        <% end %>
     </tr>
    <% end %>
   </table>
 
 </section>
+<%= link_to '<< Back', restaurants_path %>
