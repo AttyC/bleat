@@ -22,3 +22,7 @@ def sign_up(email='new_user@abc.com',password='password')
   fill_in 'user[password_confirmation]', with: password
   click_button 'Sign up'
 end
+
+def sign_out
+  click_on 'Logout'
+end
