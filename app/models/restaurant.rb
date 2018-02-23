@@ -1,4 +1,6 @@
+# require 'carrierwave/orm/activerecord'
 class Restaurant < ApplicationRecord
+  mount_uploader :avatar, AvatarUploader
   validates :name, presence: true
   validates :description, presence: true
   has_many :reviews

@@ -8,6 +8,8 @@
   <%= @restaurant.description %>
 </p>
 
+<%= image_tag @restaurant.avatar.url %>
+
 <p>
   <%= link_to "Remove Restaurant", restaurant_path(@restaurant),
   method: :delete,
