@@ -12,12 +12,19 @@ RSpec.describe "Display Reviews", :type => :feature do
   end
   feature 'Show reviews for two restaurants' do
     scenario 'when on restaurant index page' do
-      sign_up
+      sign_up(email='restaurant_owner@example.com')
       create_restaurant('Testaurant', 'Delicious')
-      create_review(2, 'really good!!')
-      create_review(5, 'terrible rat problem!')
-      within('td.rating2') {expect(page).to have_content('5')}
-      within('td.review2') {expect(page).to have_content('terrible rat problem!')}
+      create_restaurant('Fancy House', 'OMGeezies!')
+      sign_out
+      sign_up(email="reviewer@example.com")
+      visit '/restaurants'
+      click_on 'Testaurant'
+      create_review(1, 'terrible rat problem!')
+      expect(page).to have_content('terrible rat problem!')
+      click_on 'Back'
+      click_on 'Fancy House'
+      create_review(5, 'so Freaking Fancy!!')
+      expect(page).to have_content('so Freaking Fancy!!')
     end
   end
   feature 'Delete review' do

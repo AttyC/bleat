@@ -17,10 +17,10 @@
      <%= review.comment %> (<%= review.rating %>)
 
    <% end %>
- </td>
-<td><p class="small"><%=  restaurant.reviews.average(:rating).to_i %>/5</p></td>
-
-
+  </td>
+  <td class="rating">
+    <p class="small"><%=  restaurant.reviews.average(:rating).to_i %>/5</p>
+  </td>
  </tr>
  <% end %>
 </table>

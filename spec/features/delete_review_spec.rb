@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "Delete review", :type => :feature do
-  feature 'Delete review when' do
+  feature 'User can delete review successfully when' do
     scenario 'logged in user owns review' do
       sign_up(email='restaurant_owner@example.com')
       create_restaurant('Testaurant', 'Delicious')
@@ -13,7 +13,9 @@ RSpec.describe "Delete review", :type => :feature do
       click_on 'Remove Review'
       expect(page).not_to have_content('really good!!')
     end
-    scenario 'logged in user does not own review' do
+  end
+  feature 'User cannot delete review when' do
+    scenario 'user does not own review' do
       sign_up(email='restaurant_owner@example.com')
       create_restaurant('Testaurant', 'Delicious')
       sign_out
